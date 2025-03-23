@@ -33,7 +33,7 @@ services:
     #   - /run/user/1000/pipewire-0:/tmp/pipewire-0 # Pipewire socket when using pipewire
     # command: -o pw # You can specify the desired output with command:
     # TODO: make the name into an env var?
-    command: '-v --statistics -a Boombox -- hw:2 -c PCM'
+    command: '-v --statistics -a Boombox -- hw:0 -c PCM'
     logging:
       options:
         max-size: "200k"
