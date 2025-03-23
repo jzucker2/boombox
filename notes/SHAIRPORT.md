@@ -3,6 +3,7 @@
 * https://github.com/mikebrady/shairport-sync
 * https://hub.docker.com/r/mikebrady/shairport-sync
 * https://github.com/parautenbach/hass-shairport-sync
+* https://github.com/mikebrady/shairport-sync/blob/master/MQTT.md
 
 ```
 mqtt =
