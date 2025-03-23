@@ -4,6 +4,7 @@ This is just an easy repo for running stuff:
 
 * https://github.com/mikebrady/shairport-sync
 * https://hub.docker.com/r/mikebrady/sps-alsa-explore
+* https://github.com/parautenbach/hass-shairport-sync
 
 ```
 $ docker run --device /dev/snd mikebrady/sps-alsa-explore
