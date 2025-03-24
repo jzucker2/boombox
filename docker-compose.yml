@@ -2,7 +2,7 @@ services:
 
   shairport-sync:
     container_name: shairport-sync
-    image: jzucker2/simple-shairport-sync:${SHAIRPORT_SYNC_TAG}
+    image: ghcr.io/jzucker2/simple-shairport-sync:${SHAIRPORT_SYNC_TAG}
     labels:
       - wud.tag.include=${WUD_SEMVAR_INCLUDE_LABEL}
       - wud.link.template=https://github.com/jzucker2/simple-shairport-sync/releases/tag/$${major}.$${minor}.$${patch}
