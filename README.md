@@ -72,16 +72,16 @@ Create a file at `/etc/environment` like:
 # Could also use America/New_York or America/Chicago or America/Denver
 TZ=America/Los_Angeles
 # The BOOMBOX_DHCP_IP should be whatever your ethernet port is
-BOOMBOX_DHCP_IP=10.0.1.177
+BOOMBOX_DHCP_IP=10.0.1.222
 DOCKER_LOCALHOST="host.docker.internal"
-AIRPLAY_NAME=ShowerSpeakerzAirplay
-SPOTIFY_NAME="ShowerSpeakerzSpotify"
+AIRPLAY_NAME=BoomboxAirplay
+SPOTIFY_NAME="BoomboxSpotify"
 AUDIO_OUTPUT_DEVICE=hw:Audio
-MQTT_HOSTNAME=10.0.1.104
+MQTT_HOSTNAME=10.0.1.111
 MQTT_PORT=1883
-MQTT_USERNAME=hass
-MQTT_PASSWORD=raspberry
-MQTT_TOPIC=shairport/prod/showerspeakerz
+MQTT_USERNAME=user
+MQTT_PASSWORD=password
+MQTT_TOPIC=shairport/dev/boombox
 CADVISOR_EXTERNAL_PORT=8080
 NODE_EXPORTER_EXTERNAL_PORT=9100
 PROMTAIL_EXTERNAL_PORT=9080
