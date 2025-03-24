@@ -65,3 +65,24 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX packets 90  bytes 20679 (20.1 KiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+
+Create a file at `/etc/environment` like:
+
+```
+# Could also use America/New_York or America/Chicago or America/Denver
+TZ=America/Los_Angeles
+# The SMAUG_DHCP_IP should be whatever your ethernet port is
+BOOMBOX_DHCP_IP=10.0.1.111
+DOCKER_LOCALHOST="host.docker.internal"
+AIRPLAY_NAME=BoomboxAirplay
+SPOTIFY_NAME="BoomboxSpotify"
+AUDIO_OUTPUT_DEVICE=hw:Audio
+MQTT_HOSTNAME=10.0.1.104
+MQTT_PORT=1883
+MQTT_USERNAME=hass
+MQTT_PASSWORD=raspberry
+MQTT_TOPIC=shairport/prod/boombox
+CADVISOR_EXTERNAL_PORT=8080
+NODE_EXPORTER_EXTERNAL_PORT=9100
+PROMTAIL_EXTERNAL_PORT=9080
+```
