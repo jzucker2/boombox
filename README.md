@@ -71,7 +71,7 @@ Create a file at `/etc/environment` like:
 ```
 # Could also use America/New_York or America/Chicago or America/Denver
 TZ=America/Los_Angeles
-# The SMAUG_DHCP_IP should be whatever your ethernet port is
+# The BOOMBOX_DHCP_IP should be whatever your ethernet port is
 BOOMBOX_DHCP_IP=10.0.1.202
 DOCKER_LOCALHOST="host.docker.internal"
 AIRPLAY_NAME=BoomboxAirplay
