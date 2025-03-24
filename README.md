@@ -5,6 +5,7 @@ I got it working!
 This is just an easy repo for running stuff:
 
 * https://github.com/mikebrady/shairport-sync
+* https://github.com/jzucker2/simple-shairport-sync
 * https://hub.docker.com/r/mikebrady/sps-alsa-explore
 * https://github.com/parautenbach/hass-shairport-sync
 
@@ -63,4 +64,25 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         RX errors 0  dropped 126  overruns 0  frame 0
         TX packets 90  bytes 20679 (20.1 KiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+Create a file at `/etc/environment` like:
+
+```
+# Could also use America/New_York or America/Chicago or America/Denver
+TZ=America/Los_Angeles
+# The BOOMBOX_DHCP_IP should be whatever your ethernet port is
+BOOMBOX_DHCP_IP=10.0.1.222
+DOCKER_LOCALHOST="host.docker.internal"
+AIRPLAY_NAME=BoomboxAirplay
+SPOTIFY_NAME="BoomboxSpotify"
+AUDIO_OUTPUT_DEVICE=hw:Audio
+MQTT_HOSTNAME=10.0.1.111
+MQTT_PORT=1883
+MQTT_USERNAME=user
+MQTT_PASSWORD=password
+MQTT_TOPIC=shairport/dev/boombox
+CADVISOR_EXTERNAL_PORT=8080
+NODE_EXPORTER_EXTERNAL_PORT=9100
+PROMTAIL_EXTERNAL_PORT=9080
 ```

@@ -4,16 +4,17 @@
 * https://hub.docker.com/r/mikebrady/shairport-sync
 * https://github.com/parautenbach/hass-shairport-sync
 * https://github.com/mikebrady/shairport-sync/blob/master/MQTT.md
+* https://github.com/jzucker2/simple-shairport-sync
 
 ```
 mqtt =
 {
     enabled = "yes";
-    hostname = "10.0.1.104";
+    hostname = "10.0.1.111";
     port = 1883; // MQTT broker port; this is the default
-    username = "hass";
-    password = "raspberry";
-    topic = "shairport/prod/showerspeakerz";
+    username = "user";
+    password = "pass";
+    topic = "shairport/dev/boombox";
     publish_parsed = "yes"; // For metadata
     publish_cover = "yes"; // Album art
     enable_remote = "yes"; // Remote control

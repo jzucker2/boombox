@@ -2,10 +2,10 @@ services:
 
   shairport-sync:
     container_name: shairport-sync
-    image: mikebrady/shairport-sync:${SHAIRPORT_SYNC_TAG}
+    image: ghcr.io/jzucker2/simple-shairport-sync:${SHAIRPORT_SYNC_TAG}
     labels:
       - wud.tag.include=${WUD_SEMVAR_INCLUDE_LABEL}
-      - wud.link.template=https://github.com/mikebrady/shairport-sync/releases/tag/$${major}.$${minor}.$${patch}
+      - wud.link.template=https://github.com/jzucker2/simple-shairport-sync/releases/tag/$${major}.$${minor}.$${patch}
     restart: unless-stopped
     network_mode: host
     privileged: true
@@ -15,8 +15,14 @@ services:
       - "/dev/snd" # ALSA device, omit if using PulseAudio
     cap_add:
       - SYS_NICE # Found in the docs
-    volumes:
-      - ./shairport_sync/shairport-sync.conf:/etc/shairport-sync.conf # Customised Shairport Sync configuration file.
+    environment:
+      - AIRPLAY_NAME=${AIRPLAY_NAME}
+      - OUTPUT_DEVICE=${AUDIO_OUTPUT_DEVICE}
+      - MQTT_HOSTNAME=${MQTT_HOSTNAME}
+      - MQTT_PORT=${MQTT_PORT}
+      - MQTT_USERNAME=${MQTT_USERNAME}
+      - MQTT_PASSWORD=${MQTT_PASSWORD}
+      - MQTT_TOPIC=${MQTT_TOPIC}
     logging:
       options:
         max-size: "200k"
@@ -26,9 +32,8 @@ services:
     container_name: librespot
     image: giof71/librespot:${LIBRESPOT_TAG}
     labels:
-      - wud.watch=false
-      - wud.tag.include=${WUD_SEMVAR_INCLUDE_LABEL}
-      - wud.link.template=https://github.com/GioF71/librespot-docker/releases
+      - wud.tag.include=${WUD_BOOKWORM_MINOR_SEMVAR_INCLUDE_LABEL}
+      - wud.link.template=https://github.com/GioF71/librespot-docker/releases/tag/release%2F$${major}.$${minor}.$${patch}
     network_mode: host
     privileged: true
     extra_hosts:
@@ -39,11 +44,11 @@ services:
       - librespot-audio-cache:/data/cache
       - librespot-system-cache:/data/system-cache
     environment:
-      - DEVICE=hw:Audio
+      - DEVICE=${AUDIO_OUTPUT_DEVICE}
       - BACKEND=alsa
       - BITRATE=320
       - INITIAL_VOLUME=100
-      - DEVICE_NAME=spotipi
+      - DEVICE_NAME=${SPOTIFY_NAME}
 
 volumes:
   librespot-audio-cache:
