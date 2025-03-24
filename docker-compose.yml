@@ -18,10 +18,11 @@ services:
     environment:
       - AIRPLAY_NAME=${AIRPLAY_NAME}
       - OUTPUT_DEVICE=${AUDIO_OUTPUT_DEVICE}
-      - HOSTNAME=${MQTT_HOSTNAME}
-      - USERNAME=${MQTT_USERNAME}
-      - PASSWORD=${MQTT_PASSWORD}
-      - TOPIC=${MQTT_TOPIC}
+      - MQTT_HOSTNAME=${MQTT_HOSTNAME}
+      - MQTT_PORT=${MQTT_PORT}
+      - MQTT_USERNAME=${MQTT_USERNAME}
+      - MQTT_PASSWORD=${MQTT_PASSWORD}
+      - MQTT_TOPIC=${MQTT_TOPIC}
     logging:
       options:
         max-size: "200k"
