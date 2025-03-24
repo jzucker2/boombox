@@ -5,6 +5,7 @@ I got it working!
 This is just an easy repo for running stuff:
 
 * https://github.com/mikebrady/shairport-sync
+* https://github.com/jzucker2/simple-shairport-sync
 * https://hub.docker.com/r/mikebrady/sps-alsa-explore
 * https://github.com/parautenbach/hass-shairport-sync
 
