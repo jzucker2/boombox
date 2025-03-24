@@ -1,6 +1,6 @@
 # boombox
 
-I got it working!
+I got it working! Now to really use it ...
 
 This is just an easy repo for running stuff:
 
@@ -77,6 +77,7 @@ DOCKER_LOCALHOST="host.docker.internal"
 AIRPLAY_NAME=BoomboxAirplay
 SPOTIFY_NAME="BoomboxSpotify"
 AUDIO_OUTPUT_DEVICE=hw:Audio
+ENABLE_MQTT=yes
 MQTT_HOSTNAME=10.0.1.111
 MQTT_PORT=1883
 MQTT_USERNAME=user
