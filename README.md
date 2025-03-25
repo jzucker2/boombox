@@ -1,6 +1,6 @@
 # boombox
 
-I got it working! Now to really use it ...
+I got it working! Now to really use it ... (for more than a day)
 
 This is just an easy repo for running stuff:
 
@@ -8,6 +8,9 @@ This is just an easy repo for running stuff:
 * https://github.com/jzucker2/simple-shairport-sync
 * https://hub.docker.com/r/mikebrady/sps-alsa-explore
 * https://github.com/parautenbach/hass-shairport-sync
+* https://github.com/GioF71/librespot-docker
+* https://github.com/moode-player/moode
+  * https://github.com/moode-player/moode/blob/develop/www/inc/renderer.php
 
 ```
 $ docker run --device /dev/snd mikebrady/sps-alsa-explore
@@ -77,6 +80,7 @@ DOCKER_LOCALHOST="host.docker.internal"
 AIRPLAY_NAME=BoomboxAirplay
 SPOTIFY_NAME="BoomboxSpotify"
 AUDIO_OUTPUT_DEVICE=hw:Audio
+MIXER_CONTROL_NAME=Headphone
 ENABLE_MQTT=yes
 MQTT_HOSTNAME=10.0.1.111
 MQTT_PORT=1883

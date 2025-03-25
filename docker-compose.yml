@@ -18,6 +18,7 @@ services:
     environment:
       - AIRPLAY_NAME=${AIRPLAY_NAME}
       - OUTPUT_DEVICE=${AUDIO_OUTPUT_DEVICE}
+      - MIXER_CONTROL_NAME=${MIXER_CONTROL_NAME}
       - ENABLE_MQTT=${ENABLE_MQTT}
       - MQTT_HOSTNAME=${MQTT_HOSTNAME}
       - MQTT_PORT=${MQTT_PORT}
@@ -35,6 +36,7 @@ services:
     labels:
       - wud.tag.include=${WUD_BOOKWORM_MINOR_SEMVAR_INCLUDE_LABEL}
       - wud.link.template=https://github.com/GioF71/librespot-docker/releases/tag/release%2F$${major}.$${minor}.$${patch}
+    restart: unless-stopped
     network_mode: host
     privileged: true
     extra_hosts:
@@ -50,6 +52,9 @@ services:
       - BITRATE=320
       - INITIAL_VOLUME=100
       - DEVICE_NAME=${SPOTIFY_NAME}
+      - ENABLE_CACHE=Y
+      - ENABLE_SYSTEM_CACHE=Y
+      - CACHE_SIZE_LIMIT=${LIBRESPOT_CACHE_SIZE_LIMIT}
 
 volumes:
   librespot-audio-cache:
