@@ -50,6 +50,9 @@ services:
       - BITRATE=320
       - INITIAL_VOLUME=100
       - DEVICE_NAME=${SPOTIFY_NAME}
+      - ENABLE_CACHE=Y
+      - ENABLE_SYSTEM_CACHE=Y
+      - CACHE_SIZE_LIMIT=${LIBRESPOT_CACHE_SIZE_LIMIT}
 
 volumes:
   librespot-audio-cache:

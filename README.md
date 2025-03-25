@@ -8,6 +8,9 @@ This is just an easy repo for running stuff:
 * https://github.com/jzucker2/simple-shairport-sync
 * https://hub.docker.com/r/mikebrady/sps-alsa-explore
 * https://github.com/parautenbach/hass-shairport-sync
+* https://github.com/GioF71/librespot-docker
+* https://github.com/moode-player/moode
+  * https://github.com/moode-player/moode/blob/develop/www/inc/renderer.php
 
 ```
 $ docker run --device /dev/snd mikebrady/sps-alsa-explore
