@@ -65,3 +65,37 @@ $ docker run --device /dev/snd mikebrady/sps-alsa-explore
    (3) reboot and try again.
 
 ```
+
+```
+pi@showerspeakerz:~/boombox $ docker run --device /dev/snd mikebrady/sps-alsa-explore
+> Device Full Name:    "hdmi:vc4hdmi0"
+  Short Name:          "hdmi:0"
+  This HDMI port is not initialised. To use it:
+   (1) connect it up to the output device,
+   (2) turn on the output device and select this device as input,
+   (3) reboot and try again.
+
+> Device Full Name:    "hdmi:vc4hdmi1"
+  Short Name:          "hdmi:1"
+  This HDMI port is not initialised. To use it:
+   (1) connect it up to the output device,
+   (2) turn on the output device and select this device as input,
+   (3) reboot and try again.
+
+> Device Full Name:    "hw:Headphones"
+  Short Name:          "hw:2"
+  This device seems suitable for use with Shairport Sync.
+  Possible mixers:     "PCM",0                 Range: 106.38 dB
+  The following rate and format would be chosen by Shairport Sync in "auto" mode:
+     Rate              Format
+     44100             S16_LE
+
+> Device Full Name:    "hw:Audio"
+  Short Name:          "hw:3"
+  This device seems suitable for use with Shairport Sync.
+  Possible mixers:     "Headphone",0           Range:  50.00 dB
+  The following rate and format would be chosen by Shairport Sync in "auto" mode:
+     Rate              Format
+     44100             S24_3LE
+
+```
