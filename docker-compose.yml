@@ -11,6 +11,8 @@ services:
     privileged: true
     extra_hosts:
       - "${DOCKER_LOCALHOST}:host-gateway"
+    volumes:
+      - /var/run/dbus/:/var/run/dbus/:z
     devices:
       - "/dev/snd" # ALSA device, omit if using PulseAudio
     cap_add:
