@@ -1,6 +1,6 @@
 # boombox
 
-I got it working! Now to really use it ... (for more than a day)
+I got it working! Now to really use it ... (for more than a day, and long term)
 
 This is just an easy repo for running stuff:
 
