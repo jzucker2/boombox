@@ -1,6 +1,6 @@
 # boombox
 
-![Boombox](./images/)
+![Boombox](./images/boombox_transparent_bg.png)
 
 I got it working! Now to really use it ... (for more than a day, and long term)
 
