@@ -2,7 +2,7 @@
 
 ![Boombox](./images/boombox_transparent_bg.png)
 
-I got it working! Now to really use it ... (for more than a day, and long term)
+This is a simple way to turn a Raspberry Pi into a streaming music box for use with Spotify, Airplay, Music Assistant, and other devices.
 
 ## Setup
 
@@ -28,6 +28,24 @@ MQTT_PORT=1883
 MQTT_USERNAME=user
 MQTT_PASSWORD=password
 MQTT_TOPIC=shairport/dev/boombox
+```
+
+You might need to restart your Pi for the file to take effect.
+
+### Install Docker
+
+If you don't have Docker installed, you can do that with:
+
+```
+cd boombox
+./scripts/boombox_install.sh
+```
+
+Then after a restart, you can run the boombox with:
+
+```
+cd boombox
+./scripts/containers_update.sh
 ```
 
 ## How to find your IP address
