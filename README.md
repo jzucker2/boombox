@@ -112,7 +112,19 @@ $ docker run --device /dev/snd mikebrady/sps-alsa-explore
 
 ## Hardware
 
+### DAC
+
+A Digital Audio Converter (DAC) is needed to output audio from USB to the speakers. 
+The Raspberry Pi has a built-in DAC, but it's not very good and using it will cause 
+the processor to compete with the DAC for CPU resources.
+
 I recommend this [UGREEN USB to 3.5mm audio DAC from Amazon](https://www.amazon.com/dp/B08Y8CZB2S)
+
+### Raspberry Pi
+
+I recommend Raspberry Pi 3, 4, or 5.
+
+Note: The Pi 3 should be capable, but it might be a bit of a stretch.
 
 ## Resources
 
