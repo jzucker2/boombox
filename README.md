@@ -1,41 +1,57 @@
 # boombox
 
-I got it working! Now to really use it ... (for more than a day, and long term)
+![Boombox](./images/boombox_transparent_bg.png)
 
-This is just an easy repo for running stuff:
+This is a simple way to turn a Raspberry Pi into a streaming music box for use with Spotify, Airplay, Music Assistant, and other devices.
 
-* https://github.com/mikebrady/shairport-sync
-* https://github.com/jzucker2/simple-shairport-sync
-* https://hub.docker.com/r/mikebrady/sps-alsa-explore
-* https://github.com/parautenbach/hass-shairport-sync
-* https://github.com/GioF71/librespot-docker
-* https://github.com/moode-player/moode
-  * https://github.com/moode-player/moode/blob/develop/www/inc/renderer.php
+For more info on this project, see the [blog post](https://jordanzucker.guru/posts/presenting-boombox/).
+
+## Setup
+
+Create a file at `/etc/environment` like:
 
 ```
-$ docker run --device /dev/snd mikebrady/sps-alsa-explore
-> Device Full Name:    "hw:sndrpihifiberry"
-  Short Name:          "hw:0"
-  This device seems suitable for use with Shairport Sync.
-  The following rate and format would be chosen by Shairport Sync in "auto" mode:
-     Rate              Format
-     44100             S32_LE
+# Could also use America/New_York or America/Chicago or America/Denver, etc.
+TZ=America/Los_Angeles
+# The BOOMBOX_DHCP_IP should be whatever your ethernet port is (also works via wifi)
+BOOMBOX_DHCP_IP=10.0.1.222
+DOCKER_LOCALHOST="host.docker.internal"
+# Feel free to change the following 2 names (should be unique to each boombox instance)
+AIRPLAY_NAME=BoomboxAirplay
+SPOTIFY_NAME="BoomboxSpotify"
+# Find this using examples from README
+AUDIO_OUTPUT_DEVICE=hw:Audio
+MIXER_CONTROL_NAME=Headphone
+# Below MQTT stuff only needed if you want to use MQTT
+ENABLE_MQTT=yes
+# This would be the IP address of your MQTT server
+MQTT_HOSTNAME=10.0.1.111
+MQTT_PORT=1883
+MQTT_USERNAME=user
+MQTT_PASSWORD=password
+# I'd recommend making this unique to each boombox instance as well
+MQTT_TOPIC=shairport/dev/boombox
+```
 
-> Device Full Name:    "hdmi:vc4hdmi0"
-  Short Name:          "hdmi:1"
-  This device seems suitable for use with Shairport Sync.
-  The following rate and format would be chosen by Shairport Sync in "auto" mode:
-     Rate              Format
-     44100             S32_LE
+You might need to restart your Pi for the file to take effect.
 
-> Device Full Name:    "hdmi:vc4hdmi1"
-  Short Name:          "hdmi:2"
-  This HDMI port is not initialised. To use it:
-   (1) connect it up to the output device,
-   (2) turn on the output device and select this device as input,
-   (3) reboot and try again.
+### Install Docker
+
+If you don't have Docker installed, you can do that with:
 
 ```
+cd boombox
+./scripts/boombox_install.sh
+```
+
+Then after a restart, you can run the boombox with:
+
+```
+cd boombox
+./scripts/containers_update.sh
+```
+
+## How to find your IP address
 
 ```
 pi@boombox:~ $ ifconfig -a
@@ -69,25 +85,56 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-Create a file at `/etc/environment` like:
+## How to find Audio Output Device and Mixer Control
 
 ```
-# Could also use America/New_York or America/Chicago or America/Denver
-TZ=America/Los_Angeles
-# The BOOMBOX_DHCP_IP should be whatever your ethernet port is
-BOOMBOX_DHCP_IP=10.0.1.222
-DOCKER_LOCALHOST="host.docker.internal"
-AIRPLAY_NAME=BoomboxAirplay
-SPOTIFY_NAME="BoomboxSpotify"
-AUDIO_OUTPUT_DEVICE=hw:Audio
-MIXER_CONTROL_NAME=Headphone
-ENABLE_MQTT=yes
-MQTT_HOSTNAME=10.0.1.111
-MQTT_PORT=1883
-MQTT_USERNAME=user
-MQTT_PASSWORD=password
-MQTT_TOPIC=shairport/dev/boombox
-CADVISOR_EXTERNAL_PORT=8080
-NODE_EXPORTER_EXTERNAL_PORT=9100
-PROMTAIL_EXTERNAL_PORT=9080
+$ docker run --device /dev/snd mikebrady/sps-alsa-explore
+> Device Full Name:    "hw:sndrpihifiberry"
+  Short Name:          "hw:0"
+  This device seems suitable for use with Shairport Sync.
+  The following rate and format would be chosen by Shairport Sync in "auto" mode:
+     Rate              Format
+     44100             S32_LE
+
+> Device Full Name:    "hdmi:vc4hdmi0"
+  Short Name:          "hdmi:1"
+  This device seems suitable for use with Shairport Sync.
+  The following rate and format would be chosen by Shairport Sync in "auto" mode:
+     Rate              Format
+     44100             S32_LE
+
+> Device Full Name:    "hdmi:vc4hdmi1"
+  Short Name:          "hdmi:2"
+  This HDMI port is not initialised. To use it:
+   (1) connect it up to the output device,
+   (2) turn on the output device and select this device as input,
+   (3) reboot and try again.
 ```
+
+## Hardware
+
+### DAC
+
+A Digital Audio Converter (DAC) is needed to output audio from USB to the speakers. 
+The Raspberry Pi has a built-in DAC, but it's not very good and using it will cause 
+the processor to compete with the DAC for CPU resources.
+
+I recommend this [UGREEN USB to 3.5mm audio DAC from Amazon](https://www.amazon.com/dp/B08Y8CZB2S)
+
+### Raspberry Pi
+
+I recommend Raspberry Pi 3, 4, or 5.
+
+Note: The Pi 3 should be capable, but it might be a bit of a stretch.
+
+## Resources
+
+This is just an easy repo for running stuff:
+
+* https://github.com/mikebrady/shairport-sync
+* https://github.com/jzucker2/simple-shairport-sync
+* https://hub.docker.com/r/mikebrady/sps-alsa-explore
+* https://github.com/parautenbach/hass-shairport-sync
+* https://github.com/GioF71/librespot-docker
+* https://github.com/moode-player/moode
+  * https://github.com/moode-player/moode/blob/develop/www/inc/renderer.php
