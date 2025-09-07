@@ -4,40 +4,33 @@
 
 I got it working! Now to really use it ... (for more than a day, and long term)
 
-This is just an easy repo for running stuff:
+## Setup
 
-* https://github.com/mikebrady/shairport-sync
-* https://github.com/jzucker2/simple-shairport-sync
-* https://hub.docker.com/r/mikebrady/sps-alsa-explore
-* https://github.com/parautenbach/hass-shairport-sync
-* https://github.com/GioF71/librespot-docker
-* https://github.com/moode-player/moode
-  * https://github.com/moode-player/moode/blob/develop/www/inc/renderer.php
+Create a file at `/etc/environment` like:
 
 ```
-$ docker run --device /dev/snd mikebrady/sps-alsa-explore
-> Device Full Name:    "hw:sndrpihifiberry"
-  Short Name:          "hw:0"
-  This device seems suitable for use with Shairport Sync.
-  The following rate and format would be chosen by Shairport Sync in "auto" mode:
-     Rate              Format
-     44100             S32_LE
-
-> Device Full Name:    "hdmi:vc4hdmi0"
-  Short Name:          "hdmi:1"
-  This device seems suitable for use with Shairport Sync.
-  The following rate and format would be chosen by Shairport Sync in "auto" mode:
-     Rate              Format
-     44100             S32_LE
-
-> Device Full Name:    "hdmi:vc4hdmi1"
-  Short Name:          "hdmi:2"
-  This HDMI port is not initialised. To use it:
-   (1) connect it up to the output device,
-   (2) turn on the output device and select this device as input,
-   (3) reboot and try again.
-
+# Could also use America/New_York or America/Chicago or America/Denver, etc.
+TZ=America/Los_Angeles
+# The BOOMBOX_DHCP_IP should be whatever your ethernet port is (also works via wifi)
+BOOMBOX_DHCP_IP=10.0.1.222
+DOCKER_LOCALHOST="host.docker.internal"
+# Feel free to change these
+AIRPLAY_NAME=BoomboxAirplay
+SPOTIFY_NAME="BoomboxSpotify"
+# Find this using examples from README
+AUDIO_OUTPUT_DEVICE=hw:Audio
+MIXER_CONTROL_NAME=Headphone
+# Below MQTT stuff only needed if you want to use MQTT
+ENABLE_MQTT=yes
+# This would be the IP address of your MQTT server
+MQTT_HOSTNAME=10.0.1.111
+MQTT_PORT=1883
+MQTT_USERNAME=user
+MQTT_PASSWORD=password
+MQTT_TOPIC=shairport/dev/boombox
 ```
+
+## How to find your IP address
 
 ```
 pi@boombox:~ $ ifconfig -a
@@ -71,25 +64,40 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-Create a file at `/etc/environment` like:
+## How to find Audio Output Device and Mixer Control
 
 ```
-# Could also use America/New_York or America/Chicago or America/Denver
-TZ=America/Los_Angeles
-# The BOOMBOX_DHCP_IP should be whatever your ethernet port is
-BOOMBOX_DHCP_IP=10.0.1.222
-DOCKER_LOCALHOST="host.docker.internal"
-AIRPLAY_NAME=BoomboxAirplay
-SPOTIFY_NAME="BoomboxSpotify"
-AUDIO_OUTPUT_DEVICE=hw:Audio
-MIXER_CONTROL_NAME=Headphone
-ENABLE_MQTT=yes
-MQTT_HOSTNAME=10.0.1.111
-MQTT_PORT=1883
-MQTT_USERNAME=user
-MQTT_PASSWORD=password
-MQTT_TOPIC=shairport/dev/boombox
-CADVISOR_EXTERNAL_PORT=8080
-NODE_EXPORTER_EXTERNAL_PORT=9100
-PROMTAIL_EXTERNAL_PORT=9080
+$ docker run --device /dev/snd mikebrady/sps-alsa-explore
+> Device Full Name:    "hw:sndrpihifiberry"
+  Short Name:          "hw:0"
+  This device seems suitable for use with Shairport Sync.
+  The following rate and format would be chosen by Shairport Sync in "auto" mode:
+     Rate              Format
+     44100             S32_LE
+
+> Device Full Name:    "hdmi:vc4hdmi0"
+  Short Name:          "hdmi:1"
+  This device seems suitable for use with Shairport Sync.
+  The following rate and format would be chosen by Shairport Sync in "auto" mode:
+     Rate              Format
+     44100             S32_LE
+
+> Device Full Name:    "hdmi:vc4hdmi1"
+  Short Name:          "hdmi:2"
+  This HDMI port is not initialised. To use it:
+   (1) connect it up to the output device,
+   (2) turn on the output device and select this device as input,
+   (3) reboot and try again.
 ```
+
+## Resources
+
+This is just an easy repo for running stuff:
+
+* https://github.com/mikebrady/shairport-sync
+* https://github.com/jzucker2/simple-shairport-sync
+* https://hub.docker.com/r/mikebrady/sps-alsa-explore
+* https://github.com/parautenbach/hass-shairport-sync
+* https://github.com/GioF71/librespot-docker
+* https://github.com/moode-player/moode
+  * https://github.com/moode-player/moode/blob/develop/www/inc/renderer.php
