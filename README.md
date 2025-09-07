@@ -16,7 +16,7 @@ TZ=America/Los_Angeles
 # The BOOMBOX_DHCP_IP should be whatever your ethernet port is (also works via wifi)
 BOOMBOX_DHCP_IP=10.0.1.222
 DOCKER_LOCALHOST="host.docker.internal"
-# Feel free to change these
+# Feel free to change the following 2 names (should be unique to each boombox instance)
 AIRPLAY_NAME=BoomboxAirplay
 SPOTIFY_NAME="BoomboxSpotify"
 # Find this using examples from README
@@ -29,6 +29,7 @@ MQTT_HOSTNAME=10.0.1.111
 MQTT_PORT=1883
 MQTT_USERNAME=user
 MQTT_PASSWORD=password
+# I'd recommend making this unique to each boombox instance as well
 MQTT_TOPIC=shairport/dev/boombox
 ```
 
