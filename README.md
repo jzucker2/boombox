@@ -110,6 +110,10 @@ $ docker run --device /dev/snd mikebrady/sps-alsa-explore
    (3) reboot and try again.
 ```
 
+## Hardware
+
+I recommend this [UGREEN USB to 3.5mm audio DAC from Amazon](https://www.amazon.com/dp/B08Y8CZB2S)
+
 ## Resources
 
 This is just an easy repo for running stuff:
