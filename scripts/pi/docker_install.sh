@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NUMBER_STEPS=5
+NUMBER_STEPS=4
 
 echo "Install docker in ${NUMBER_STEPS} steps!"
 
