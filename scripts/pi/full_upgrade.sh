@@ -16,7 +16,7 @@ sudo apt list --upgradeable
 
 
 echo "[3/${NUMBER_STEPS}] remove docker config before update process at SYS_DOCKER_CONFIG_PATH: ${SYS_DOCKER_CONFIG_PATH}"
-sudo rm sudo rm $SYS_DOCKER_CONFIG_PATH
+sudo rm $SYS_DOCKER_CONFIG_PATH
 
 
 echo "[4/${NUMBER_STEPS}] full upgrade apt"
