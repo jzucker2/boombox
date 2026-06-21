@@ -3,7 +3,7 @@
 STEPS=5
 echo "Check all containers in ${STEPS} steps!"
 
-echo "[1/${NUMBER_STEPS}] check git branch"
+echo "[1/${STEPS}] check git branch"
 git status
 
 echo "[2/${STEPS}] check current container images"
