@@ -2,7 +2,8 @@
 
 ![Boombox](./images/boombox_transparent_bg.png)
 
-This is a simple way to turn a Raspberry Pi into a streaming music box for use with Spotify, Airplay, Music Assistant, and other devices.
+This is a simple way to turn a Raspberry Pi into a streaming music box 
+for use with Spotify, Airplay, Music Assistant, and other devices.
 
 For more info on this project, see the [blog post](https://jordanzucker.guru/posts/presenting-boombox/).
 
