@@ -12,7 +12,7 @@ echo "[1/${NUMBER_STEPS}] update registry"
 sudo apt update
 
 echo "[2/${NUMBER_STEPS}] list upgrades"
-PAGER=cat sudo apt list --upgradable
+sudo apt list --upgradable | cat
 
 
 echo "[3/${NUMBER_STEPS}] remove docker config before update process at SYS_DOCKER_CONFIG_PATH: ${SYS_DOCKER_CONFIG_PATH}"
